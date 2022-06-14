@@ -1,3 +1,8 @@
+<!--
+ * @LastEditors: 丁玉欣
+ * @LastEditTime: 2022-06-14 11:39:48
+ * @Description: 文件介绍
+-->
 <template>
     <div class="main">
         <div class="login">
@@ -27,7 +32,8 @@ import {
     reactive,
 } from 'vue'
 import * as Interface from './index.interface'
-import http from '../../utils/request'
+// import * as Services from ''
+import * as Services from '@/api/login/index.js'
 const formState = reactive<Interface.LoginEnter>({
     username: '',
     password: '',
@@ -41,7 +47,7 @@ const fun = {
         console.log(val)
     },
     queryData: () => {
-        http.get('queryUserList', {}).then((res) => {
+        Services.login1({}).then((res) => {
             console.log(res)
         })
     }
