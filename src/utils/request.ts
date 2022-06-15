@@ -71,13 +71,17 @@ service.interceptors.response.use(
 let request = function (url: String, params: Object, type: any) {
   // 根据请求方式整理参数
   let paramsData = {}
-  if (type == "get") {
-    paramsData = {
-      'params': params
-    }
-  }
-  else {
-    paramsData = params
+  switch (type) {
+    case 'get':
+      paramsData = {
+        'params': params
+      }
+      break;
+    case 'post':
+      paramsData = params
+      break;
+    default: ;
+
   }
   // 返回参数预设
   const resData = {

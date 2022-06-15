@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-14 11:39:48
+ * @LastEditTime: 2022-06-15 16:35:23
  * @Description: 文件介绍
 -->
 <template>
@@ -35,8 +35,8 @@ import * as Interface from './index.interface'
 // import * as Services from ''
 import * as Services from '@/api/login/index.js'
 const formState = reactive<Interface.LoginEnter>({
-    username: '',
-    password: '',
+    username: "123123",
+    password: "123123",
 })
 
 const fun = {
@@ -47,7 +47,7 @@ const fun = {
         console.log(val)
     },
     queryData: () => {
-        Services.login1({}).then((res) => {
+        Services.login1(formState).then((res) => {
             console.log(res)
         })
     }
