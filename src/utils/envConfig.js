@@ -1,6 +1,6 @@
 /*
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-15 16:34:14
+ * @LastEditTime: 2022-06-16 14:59:45
  * @Description: 文件介绍
  */
 /*
@@ -47,8 +47,9 @@ export function envConfig() {
         case 'dev':
             urlConfig = {
                 url: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass/',
-                url1: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass/',
-                local:'http://localhost:3000',
+                local: 'http://localhost:3000',
+                // mock: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass/',
+                mock: 'https://www.fastmock.site/mock/5ea44c8d5ded03d6407147d34fa16f93/ding/',
                 SUPPLIER_HOST: 'http://www.baidu.com',
                 CONFIGURATION_HOST: 'http://www.baidu.com'
             }

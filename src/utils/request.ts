@@ -12,7 +12,7 @@ import { message, Modal } from 'ant-design-vue';
 // 创建服务
 const service = axios.create({
   // baseURL: url,
-  timeout: 1000 * 10,
+  timeout: 1000 * 30,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
     'Access-Control-Allow-Origin': "*"
@@ -40,10 +40,14 @@ service.interceptors.request.use(
     let title = "请求接口"
     let configUrl = config.url
     let data = config.params || config.data
-    console.log(title, configUrl, data)
+
     let baseURL = config.baseURL
     let url = config.url?.replace(baseURL || "", '') || ""
     config.headers = getHeader(url)
+    console.log(title)
+    console.log(JSON.stringify(configUrl))
+    console.log(data)
+    console.log(config)
     return config;
   }
 )
@@ -97,11 +101,11 @@ let request = function (url: String, params: Object, type: any) {
           resData.data = parametSorting(res);
         }
       )
-      .catch(
-        (error: null) => {
-          resData.error = error
-        }
-      )
+      .catch((error: any) => {
+        console.log(error)
+        message.error(error.message)
+        resData.error = error
+      })
       .finally(() => {
         resData.loading = false
         resolve(resData)
