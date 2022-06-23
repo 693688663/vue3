@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-16 15:48:40
+ * @LastEditTime: 2022-06-20 16:59:36
  * @Description: 文件介绍
 -->
 <template>
@@ -40,17 +40,19 @@ import md5 from 'js-md5'
 // antd-v
 import { Form } from 'ant-design-vue'
 // interface
-import * as Interface from './index.interface'
+import * as Interface from '@/interface'
 // services
-import * as Services from '@/api/login/index.js'
+import * as Services from './index.service'
 // 
 const useForm = Form.useForm;
 
 // 数据
-const formState = reactive<Interface.LoginEnter>({
-    username: "",
-    password: "",
+// 登录入参
+const formState = reactive<Interface.loginParams>({
+    username: "",//账号
+    password: "",//密码
 })
+// 登录信息验证
 const formRules = reactive({
     username: [
         {
@@ -75,12 +77,15 @@ const fun = {
     // 登录提交
     submit: () => {
         validate().then((params) => {
-            let data = {
+            let data: Interface.loginParams = {
                 ...params,
                 password: md5(params.password)
             }
-            Services.login1(data).then((res) => {
+            Services.login(data).then((res) => {
+                
+                console.log("---")
                 console.log(res)
+                console.log("---")
             })
         })
     },

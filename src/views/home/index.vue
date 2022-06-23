@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-16 18:07:47
+ * @LastEditTime: 2022-06-23 14:16:13
  * @Description: 主页
 -->
 <template>
@@ -48,7 +48,9 @@
       </a-layout-sider>
       <a-layout>
         <a-layout-header>Header</a-layout-header>
-        <a-layout-content>Content</a-layout-content>
+        <a-layout-content>
+          <router-view />
+        </a-layout-content>
       </a-layout>
     </a-layout>
   </div>

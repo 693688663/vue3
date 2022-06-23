@@ -38,16 +38,11 @@ let getHeader = function (url: String) {
 service.interceptors.request.use(
   config => {
     let title = "请求接口"
-    let configUrl = config.url
-    let data = config.params || config.data
+    console.log(title, JSON.stringify(config.url), config.params || config.data)
 
     let baseURL = config.baseURL
     let url = config.url?.replace(baseURL || "", '') || ""
     config.headers = getHeader(url)
-    console.log(title)
-    console.log(JSON.stringify(configUrl))
-    console.log(data)
-    console.log(config)
     return config;
   }
 )
@@ -90,32 +85,35 @@ let request = function (url: String, params: Object, type: any) {
   // 返回参数预设
   const resData = {
     loading: false,
-    data: {},
     error: null
   }
+  let outParams = {}
   return new Promise((resolve) => {
     service[type](url, paramsData)
       .then(
         (res: {}) => {
-          console.log(res)
-          resData.data = parametSorting(res);
+          outParams = {
+            ...resData,
+            ...(parametSorting(res))
+          };
         }
       )
       .catch((error: any) => {
-        console.log(error)
         message.error(error.message)
-        resData.error = error
+        outParams = {
+          ...resData,
+          error
+        }
       })
       .finally(() => {
-        resData.loading = false
-        resolve(resData)
+        resolve(outParams)
       })
   })
 }
 
 // 参数整理
 let parametSorting = function (paramet) {
-  return paramet.data.data
+  return paramet.data
 }
 // post请求
 let post = function (url: String, params: Object) {

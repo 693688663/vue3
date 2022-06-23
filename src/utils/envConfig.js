@@ -1,6 +1,6 @@
 /*
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-16 14:59:45
+ * @LastEditTime: 2022-06-20 16:03:07
  * @Description: 文件介绍
  */
 /*
@@ -46,36 +46,26 @@ export function envConfig() {
         // 开发环境
         case 'dev':
             urlConfig = {
-                url: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass/',
-                local: 'http://localhost:3000',
-                // mock: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass/',
-                mock: 'https://www.fastmock.site/mock/5ea44c8d5ded03d6407147d34fa16f93/ding/',
-                SUPPLIER_HOST: 'http://www.baidu.com',
-                CONFIGURATION_HOST: 'http://www.baidu.com'
+                url: 'http://localhost:3000',
+                mock: 'https://www.fastmock.site/mock/5ea44c8d5ded03d6407147d34fa16f93/ding',
             }
             break;
         //sit环境
         case 'sit':
             urlConfig = {
-                url: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass',
-                SUPPLIER_HOST: 'http://www.baidu.com',
-                CONFIGURATION_HOST: 'http://www.baidu.com'
+                url: 'http://localhost:3000',
             }
             break;
         // UAT环境
         case 'uat':
             urlConfig = {
-                url: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass',
-                SUPPLIER_HOST: 'http://www.baidu.com',
-                CONFIGURATION_HOST: 'http://www.baidu.com'
+                url: 'http://localhost:3000',
             }
             break;
         // 生产环境
         case 'prod':
             urlConfig = {
-                url: 'https://www.fastmock.site/mock/9d721f8600395e27eebc0388281d1826/starship-dbass',
-                SUPPLIER_HOST: 'http://www.baidu.com',
-                CONFIGURATION_HOST: 'http://www.baidu.com'
+                url: 'http://localhost:3000',
             }
             break;
         default: ;
