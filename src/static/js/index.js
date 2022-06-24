@@ -1,6 +1,6 @@
 /*
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-23 14:43:17
+ * @LastEditTime: 2022-06-24 16:35:35
  * @Description: 文件介绍
  */
 
@@ -15,7 +15,7 @@
  * 递归整理路由 将showType为空或false的值过滤掉
  * json两次转换将去除掉函数变量
  */
-const setRouter = (list) => {
+export const setRouter = (list) => {
   let arr = []
   for (let i = 0; i < list.length; i++) {
     let item = JSON.parse(JSON.stringify(list[i]))
@@ -27,7 +27,10 @@ const setRouter = (list) => {
     ) {
       item.children = setRouter(item?.children)
     }
-    arr.push(item)
+    arr.push({
+      ...item,
+      id: onlyId()
+    })
 
   }
   return arr
@@ -37,19 +40,13 @@ const setRouter = (list) => {
 /**
  * @description: 生成不重复id
  * @return {*}
- * 生成唯一id为没有id 或者可能重复的列表id赋值
+ * 生成唯一id
  */
-const onlyId = () => {
+export const onlyId = (() => {
   let i = 0;
   return function () {
     let m = i += 1;
     return m
   }
-}
+})()
 
-
-
-export default {
-  setRouter, //整理路由文件
-  onlyId: onlyId()//生成id
-}
