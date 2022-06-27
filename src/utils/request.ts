@@ -2,7 +2,10 @@ import axios from 'axios';
 import moment from 'moment'
 import { getEnv } from './envConfig.js'
 import { message, Modal } from 'ant-design-vue';
-
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter(), route = useRoute();
+// console.log("this")
+// console.log(this)
 /*
     axios封装：axios信息配置及导出封装后的模块使用
     请求方式封装：get  post
@@ -37,13 +40,24 @@ let getHeader = function (url: String) {
 // 请求拦截
 service.interceptors.request.use(
   config => {
+    console.log("config")
+    console.log(config)
     let title = "请求接口"
     console.log(title, JSON.stringify(config.url), config.params || config.data)
 
     let baseURL = config.baseURL
     let url = config.url?.replace(baseURL || "", '') || ""
     config.headers = getHeader(url)
+    // 接口发出拦截
+    if (config.headers.token == "") {
+      window.location.hash = "/home"
+      return
+    }
     return config;
+  }, err => {
+    // return 1234;
+    return Promise.reject(err);
+    // return Promise.reject(err);
   }
 )
 
@@ -99,7 +113,6 @@ let request = function (url: String, params: Object, type: any) {
         }
       )
       .catch((error: any) => {
-        message.error(error.message)
         outParams = {
           ...resData,
           error

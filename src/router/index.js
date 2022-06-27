@@ -1,6 +1,6 @@
 /*
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-24 16:13:52
+ * @LastEditTime: 2022-06-27 17:46:57
  * @Description: 路由配置及路由拦截
  * 菜单路由有有几种配置
  * 1.有多层的权限配置 1.2.3.4.5··· 默认无权限
@@ -39,9 +39,12 @@ const router = createRouter({
     routes: routes
 })
 // 路由拦截
-router.beforeEach((to, from) => {
+router.beforeEach((to, from, next) => {
     console.log('to', to)
     console.log('from', from)
-    // return false
+    if (to.path === '/login') return next();
+    const token = window.sessionStorage.getItem('token')
+    if (!token) return next('/login')
+    next()
 })
 export default router

@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-24 18:13:55
+ * @LastEditTime: 2022-06-27 14:51:35
  * @Description: 文件介绍
 -->
 
@@ -13,9 +13,9 @@
 <script lang="ts" setup>
 import search from './components/search.vue'
 import list from './components/list.vue'
-import * as store from './index.store.js'
+import a, * as store from './index.store.js'
+import { provide, inject, ref, reactive, } from 'vue'
 
-import { provide, inject, ref, reactive } from 'vue'
 Object.keys(store).map((item) => {
   provide(item, store[item])
 })

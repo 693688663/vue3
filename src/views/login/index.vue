@@ -1,6 +1,6 @@
 <!--
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-20 16:59:36
+ * @LastEditTime: 2022-06-27 17:07:18
  * @Description: 文件介绍
 -->
 <template>
@@ -43,6 +43,8 @@ import { Form } from 'ant-design-vue'
 import * as Interface from '@/interface'
 // services
 import * as Services from './index.service'
+import { useRouter, useRoute } from 'vue-router';
+const router = useRouter(), route = useRoute();
 // 
 const useForm = Form.useForm;
 
@@ -82,7 +84,8 @@ const fun = {
                 password: md5(params.password)
             }
             Services.login(data).then((res) => {
-                
+                //   router.push("/home");
+
                 console.log("---")
                 console.log(res)
                 console.log("---")
