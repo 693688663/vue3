@@ -1,6 +1,6 @@
 /*
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-27 16:35:30
+ * @LastEditTime: 2022-06-28 11:15:44
  * @Description: 报错监听
  */
 import { message, Modal } from 'ant-design-vue'
@@ -21,5 +21,15 @@ const mixins = {
     });
     return false
   },
+  directives: {
+    code: function (el, val) {
+      // console.log(el)
+      // console.log(val)
+      // console.log(val.value)
+      if (val.value == 1) {
+        el.style.display = 'none'
+      }
+    }
+  }
 }
 export default mixins

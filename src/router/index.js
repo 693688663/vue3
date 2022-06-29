@@ -1,6 +1,6 @@
 /*
  * @LastEditors: 丁玉欣
- * @LastEditTime: 2022-06-27 17:46:57
+ * @LastEditTime: 2022-06-28 17:21:03
  * @Description: 路由配置及路由拦截
  * 菜单路由有有几种配置
  * 1.有多层的权限配置 1.2.3.4.5··· 默认无权限
@@ -12,7 +12,7 @@
  */
 // vue-router
 import { createRouter, createWebHashHistory } from "vue-router";
-import { menuAll } from "@/router/home/allMenu"
+import { routerList } from "@/router/home/allMenu"
 // 路由配置
 const routes = [
     {
@@ -26,7 +26,7 @@ const routes = [
     {
         path: "/home",
         component: () => import('../views/home/index.vue'),
-        children: menuAll
+        children: routerList
     },
     {
         path: "/404",
@@ -40,11 +40,11 @@ const router = createRouter({
 })
 // 路由拦截
 router.beforeEach((to, from, next) => {
-    console.log('to', to)
-    console.log('from', from)
-    if (to.path === '/login') return next();
-    const token = window.sessionStorage.getItem('token')
-    if (!token) return next('/login')
+    // console.log('to', to)
+    // console.log('from', from)
+    // if (to.path === '/login') return next();
+    // const token = window.sessionStorage.getItem('token')
+    // if (!token) return next('/login')
     next()
 })
 export default router

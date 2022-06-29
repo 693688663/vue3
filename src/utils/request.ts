@@ -50,7 +50,7 @@ service.interceptors.request.use(
     config.headers = getHeader(url)
     // 接口发出拦截
     if (config.headers.token == "") {
-      window.location.hash = "/home"
+      window.location.hash = "/login"
       return
     }
     return config;
